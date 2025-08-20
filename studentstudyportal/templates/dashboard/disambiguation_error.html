@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disambiguation Error</title>
+</head>
+<body>
+    <h1>Disambiguation Error</h1>
+    <p>Multiple results found for '{{ form.text.value }}'. Please choose one:</p>
+    <ul>
+        {% for option in options %}
+            <li><a href="?text={{ option }}">{{ option }}</a></li>
+        {% endfor %}
+    </ul>
+    <p>{{ error_message }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Search</button>
+    </form>
+</body>
+</html>
